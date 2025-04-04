@@ -1,5 +1,9 @@
 import { useState } from "react";
 import profilePic from "./Assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
+import screenshot1 from "./Assets/Screenshot 2025-03-24 193304.png";
+import screenshot2 from "./Assets/Screenshot 2025-04-04 184020.png";
+import screenshot3 from "./Assets/Screenshot 2025-03-01 200642.png";
+import screenshot4 from "./Assets/Screenshot 2025-03-31 225106.png";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,8 +40,6 @@ function App() {
               )}
             </svg>
           </button>
-
-          {/* Desktop menu */}
           <div className="hidden md:flex space-x-8">
             <a href="#about" className="hover:text-blue-400 transition">
               About
@@ -53,39 +55,24 @@ function App() {
             </a>
           </div>
         </div>
-
-        {/* Mobile menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-slate-900 px-4 py-2">
-            <a
-              href="#about"
-              className="block py-2 hover:text-blue-400 transition"
-            >
+            <a href="#about" className="block py-2 hover:text-blue-400 transition">
               About
             </a>
-            <a
-              href="#skills"
-              className="block py-2 hover:text-blue-400 transition"
-            >
+            <a href="#skills" className="block py-2 hover:text-blue-400 transition">
               Skills
             </a>
-            <a
-              href="#projects"
-              className="block py-2 hover:text-blue-400 transition"
-            >
+            <a href="#projects" className="block py-2 hover:text-blue-400 transition">
               Projects
             </a>
-            <a
-              href="#contact"
-              className="block py-2 hover:text-blue-400 transition"
-            >
+            <a href="#contact" className="block py-2 hover:text-blue-400 transition">
               Contact
             </a>
           </div>
         )}
       </nav>
 
-      {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 md:py-20 flex flex-col items-center justify-center text-center">
         <div className="mb-8">
           <img
@@ -117,7 +104,6 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
       <section id="about" className="bg-slate-900/80 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
@@ -140,7 +126,6 @@ function App() {
         </div>
       </section>
 
-      {/* Skills Section */}
       <section id="skills" className="py-16 bg-black/60">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
@@ -156,7 +141,6 @@ function App() {
                 architecture, state management and hooks
               </p>
             </div>
-
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 hover:border-blue-400 transition">
               <h3 className="text-xl font-semibold mb-4 text-blue-400">
                 TailwindCSS
@@ -166,7 +150,6 @@ function App() {
                 aesthetics and optimized workflows.
               </p>
             </div>
-
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 hover:border-blue-400 transition">
               <h3 className="text-xl font-semibold mb-4 text-blue-400">NODE</h3>
               <p className="text-slate-300">
@@ -174,7 +157,6 @@ function App() {
                 frontend applications.
               </p>
             </div>
-
             <div className="bg-slate-900 p-6 rounded-lg border border-slate-800 hover:border-blue-400 transition">
               <h3 className="text-xl font-semibold mb-4 text-blue-400">
                 Frontend Fundamentals
@@ -188,7 +170,6 @@ function App() {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section id="projects" className="bg-slate-900/90 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
@@ -199,7 +180,7 @@ function App() {
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-24 193304.png"
+                    src={screenshot1}
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
@@ -233,12 +214,13 @@ function App() {
                   </div>
                 </div>
               </div>
+
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-04-04 184020.png"
+                    src={screenshot2}
                     alt="blog"
-                    className="object-fit h-full w-full"
+                    className="object-cover h-full w-full"
                   />
                 </div>
                 <div className="p-6">
@@ -273,10 +255,11 @@ function App() {
                   </div>
                 </div>
               </div>
+
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-01 200642.png"
+                    src={screenshot3}
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
@@ -313,10 +296,11 @@ function App() {
                   </div>
                 </div>
               </div>
+
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-31 225106.png"
+                    src={screenshot4}
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
@@ -349,12 +333,12 @@ function App() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
       <section id="contact" className="py-16 bg-black/60">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
@@ -381,7 +365,7 @@ function App() {
                 />
               </svg>
               <a
-                href="mailto:example@gmail.com"
+                href="mailto:johnthesheepbuzz605@gmail.com"
                 className="text-blue-400 hover:underline"
               >
                 johnthesheepbuzz605@gmail.com
@@ -391,10 +375,8 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-black border-t border-slate-800 py-8">
         <div className="container mx-auto px-4 text-center">
-          
           <p className="text-slate-500">
             © 2023 Aditya Mandal. All rights reserved.
           </p>
