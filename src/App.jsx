@@ -1,5 +1,5 @@
 import { useState } from "react";
-import profilePic from "./assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
+import profilePic from "./Assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -199,7 +199,7 @@ function App() {
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-24 193304.png"
+                    src=".src/Assets/Screenshot 2025-03-24 193304.png"
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
@@ -236,7 +236,7 @@ function App() {
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-04-04 184020.png"
+                    src=".src/Assets/Screenshot 2025-04-04 184020.png"
                     alt="blog"
                     className="object-fit h-full w-full"
                   />
@@ -276,7 +276,7 @@ function App() {
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-01 200642.png"
+                    src=".src/Assets/Screenshot 2025-03-01 200642.png"
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
@@ -316,7 +316,7 @@ function App() {
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
-                    src="./Assets/Screenshot 2025-03-31 225106.png"
+                    src=".src/Assets/Screenshot 2025-03-31 225106.png"
                     alt="blog"
                     className="object-cover h-full w-full"
                   />
