@@ -378,7 +378,7 @@ function App() {
       <footer className="bg-black border-t border-slate-800 py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-slate-500">
-            © 2023 Aditya Mandal. All rights reserved.
+            © 2025 Aditya Mandal. All rights reserved.
           </p>
         </div>
       </footer>
