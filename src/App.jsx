@@ -120,7 +120,7 @@ function App() {
             <p>
               I enjoy the process of transforming ideas into reality using code.
               When I'm not coding, you'll find me exploring new technologies,
-              contributing to open-source projects, or enjoying a FormSoft game.<br/> yeah I'm a dark souls fan
+              contributing to open-source projects, or enjoying a FromSoft game.<br/> yeah I'm a dark souls fan
             </p>
           </div>
         </div>
