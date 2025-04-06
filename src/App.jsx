@@ -91,13 +91,13 @@ function App() {
         <div className="flex space-x-4">
           <a
             href="#contact"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-3 rounded-md font-medium transition text-sm md:text-xl"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-3 rounded-md font-medium transition text-sm md:text-xl z-10 relative"
           >
             Get in Touch
           </a>
           <a
             href="#projects"
-            className="border border-slate-700 hover:border-blue-400 px-6 py-3 rounded-md font-medium transition text-sm md:text-xl"
+            className="border border-slate-700 hover:border-blue-400 px-6 py-3 rounded-md font-medium transition text-sm md:text-xl z-10 relative"
           >
             View My Work
           </a>
