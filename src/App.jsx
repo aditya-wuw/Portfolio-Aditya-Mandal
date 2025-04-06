@@ -113,8 +113,7 @@ function App() {
           </h2>
           <div className="max-w-3xl mx-auto text-slate-300">
             <p className="mb-4">
-              I'm a frontend developer with a keen eye for creating
-              clean, efficient, and user-friendly websites. My journey in web
+              My journey in web
               development began with a curiosity about how websites work, which
               evolved into having a career focused on building engaging digital
               experiences.
