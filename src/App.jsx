@@ -4,10 +4,10 @@ import screenshot1 from "./Assets/Screenshot 2025-03-24 193304.png";
 import screenshot2 from "./Assets/Screenshot 2025-04-04 184020.png";
 import screenshot3 from "./Assets/Screenshot 2025-03-01 200642.png";
 import screenshot4 from "./Assets/Screenshot 2025-03-31 225106.png";
-
+import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png"
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-slate-900 text-white">
       <nav className="sticky top-0 z-10 bg-black/90 backdrop-blur-sm border-b border-slate-800">
@@ -73,35 +73,37 @@ function App() {
         )}
       </nav>
 
-      <section className="container mx-auto px-4 py-16 md:py-20 flex flex-col items-center justify-center text-center">
-        <div className="mb-8">
+      <section className="container mx-auto py-16 md:py-20 flex flex-col items-center justify-center text-center relative">
+        <div className="mb-8 ">
           <img
             src={profilePic}
             alt="Aditya Mandal"
-            className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg shadow-blue-500/20"
+            className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg shadow-blue-500/20 z-10 relative"
           />
         </div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
           Hi, I'm <span className="text-blue-400">Aditya Mandal</span>
         </h1>
         <p className="text-xl text-slate-300 max-w-2xl mb-8">
-          Frontend Developer specializing in building modern, responsive web
-          applications with REACT and TailwindCSS.
+          FullStack Developer specializing in Frontend and building modern, responsive web
+          applications with REACT, NODE,and TailwindCSS.
         </p>
         <div className="flex space-x-4">
           <a
             href="#contact"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-3 rounded-md font-medium transition text-sm md:text-xl"
           >
             Get in Touch
           </a>
           <a
             href="#projects"
-            className="border border-slate-700 hover:border-blue-400 px-6 py-3 rounded-md font-medium transition"
+            className="border border-slate-700 hover:border-blue-400 px-6 py-3 rounded-md font-medium transition text-sm md:text-xl"
           >
             View My Work
           </a>
         </div>
+      <div className="absolute inset-0 bg-[url(https://images2.alphacoders.com/134/1348285.png)] bg-cover bg-center bg-no-repeat opacity-30 [mask-image:radial-gradient(circle_at_center,black_40%,transparent_100%)] 
+  mask"></div>
       </section>
 
       <section id="about" className="bg-slate-900/80 py-16">
@@ -177,6 +179,46 @@ function App() {
           </h2>
           <div className="overflow-x-auto pb-4">
             <div className="fixscroll flex space-x-6 min-w-max px-2">
+              {/*  projects */}
+              
+              <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
+                <div className="h-48 bg-slate-800 overflow-hidden">
+                  <img
+                    src={screenshot5}
+                    alt="blog"
+                    className="object-cover h-full w-full"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition">
+                    HMS-dashbord
+                  </h3>
+                  <p className="text-slate-300 mb-4">
+                    Was tasked to build a Admin Hospital Management System Dashbord with the help of Cursor and my prefered tech stack
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded">
+                      React
+                    </span>
+                  </div>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://hms-dashbord-1.onrender.com/"
+                      className="text-blue-400 hover:text-blue-300 transition"
+                    >
+                      View Project
+                    </a>
+                    <a
+                      href="https://github.com/Johanlee69/HMS-Dashbord"
+                      className="text-blue-400 hover:text-blue-300 transition"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
@@ -214,7 +256,42 @@ function App() {
                   </div>
                 </div>
               </div>
-
+              <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
+                <div className="h-48 bg-slate-800 overflow-hidden">
+                  <img
+                    src={screenshot4}
+                    alt="blog"
+                    className="object-cover h-full w-full"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition">
+                    A Password Manager
+                  </h3>
+                  <p className="text-slate-300 mb-4">
+                    A Password manager tool inspried by the game Dark Souls III. I havn't tested this project properly there might be some bugs
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded">
+                      React
+                    </span>
+                  </div>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://pass-souls-iii.onrender.com/"
+                      className="text-blue-400 hover:text-blue-300 transition"
+                    >
+                      View Project
+                    </a>
+                    <a
+                      href="https://github.com/Johanlee69/pass-souls-III"
+                      className="text-blue-400 hover:text-blue-300 transition"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
               <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                 <div className="h-48 bg-slate-800 overflow-hidden">
                   <img
@@ -297,42 +374,6 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
-                <div className="h-48 bg-slate-800 overflow-hidden">
-                  <img
-                    src={screenshot4}
-                    alt="blog"
-                    className="object-cover h-full w-full"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition">
-                    A Password Manager
-                  </h3>
-                  <p className="text-slate-300 mb-4">
-                    A Password manager tool inspried by the game Dark Souls III. I havn't tested this project properly there might be some bugs
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span className="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded">
-                      React
-                    </span>
-                  </div>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://pass-souls-iii.onrender.com/"
-                      className="text-blue-400 hover:text-blue-300 transition"
-                    >
-                      View Project
-                    </a>
-                    <a
-                      href="https://github.com/Johanlee69/pass-souls-III"
-                      className="text-blue-400 hover:text-blue-300 transition"
-                    >
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-              </div>
 
             </div>
           </div>
@@ -366,7 +407,7 @@ function App() {
               </svg>
               <a
                 href="mailto:johnthesheepbuzz605@gmail.com"
-                className="text-blue-400 hover:underline"
+                className="text-blue-400 hover:underline text-sm md:text-2xl"
               >
                 johnthesheepbuzz605@gmail.com
               </a>
