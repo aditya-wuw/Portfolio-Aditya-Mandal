@@ -81,10 +81,10 @@ function App() {
             className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg shadow-blue-500/20 z-10 relative"
           />
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+        <h1 className="text-3xl md:text-6xl font-bold mb-6">
           Hi, I'm <span className="text-blue-400">Aditya Mandal</span>
         </h1>
-        <p className="text-xl text-slate-300 max-w-2xl mb-8">
+        <p className="text-sm md:text-xl text-slate-300 max-w-2xl mb-8 ">
           FullStack Developer specializing in Frontend and building modern, responsive web
           applications with REACT, NODE,and TailwindCSS.
         </p>
