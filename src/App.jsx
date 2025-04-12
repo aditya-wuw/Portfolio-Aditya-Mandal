@@ -1,13 +1,14 @@
 import { useState } from "react";
 import profilePic from "./Assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
-import screenshot1 from "./Assets/Screenshot 2025-03-24 193512.png";
-import screenshot2 from "./Assets/Screenshot 2025-04-04 184020.png";
+import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
+import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
 import screenshot3 from "./Assets/Screenshot 2025-03-01 200642.png";
 import screenshot4 from "./Assets/Screenshot 2025-03-31 225106.png";
 import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4"
 import Aragaki from "./Assets/Aragaki-blue.png"
 import Mitsuru from "./Assets/Misturu.png"
+import { MdArrowForwardIos } from "react-icons/md";
 const navLinks = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
@@ -44,21 +45,21 @@ const skillsData = {
   title: "My Skills",
   items: [
     {
-      name: "REACT.js",
-      description: "Building interactive UIs with React's component-based architecture, state management and hooks"
+      name: "REACT.js, NEXT.js",
+      description: "Building interactive UIs with it's component-based architecture,file based routing, state management and hooks"
     },
     {
-      name: "TailwindCSS",
-      description: "Creating responsive, utility-first designs with modern aesthetics and optimized workflows."
+      name: "TailwindCSS, Figma",
+      description: "Creating responsive, utility-first designs with modern aesthetics. Have eye for attractive design."
     },
     {
       name: "NODE",
       description: "Developing backend services and APIs with Node.js to support frontend applications."
     },
     {
-      name: "Frontend Fundamentals",
-      description: "Strong foundation in HTML, CSS, JavaScript, and modern web development practices."
-    }
+      name: "Database Management",
+      description: "Have a good knowledge of MongoDB and MySQL. Mostly utilizing MongoDB for projects"
+    },
   ]
 };
 
@@ -69,17 +70,27 @@ const projectsData = {
       title: "HMS-dashbord",
       description: "Was tasked to build a Admin Hospital Management System Dashbord with the help of Cursor and my prefered tech stack",
       image: screenshot5,
-      tags: ["React","NODE","Express","React-Icons"],
+      tags: ["React","NODE","Express","React-Icons","LIVE"],
       links: [
         { label: "View Project", url: "https://hms-dashbord-1.onrender.com/" },
         { label: "GitHub", url: "https://github.com/Johanlee69/HMS-Dashbord" }
       ]
     },
     {
+      title: "Task Manager(Level UP)",
+      description: "Task manager app with a level up theme.where users can add tasks, delete tasks, and mark tasks as completed and gain xp and level up",
+      image: screenshot1,
+      tags: ["React","NODE","Express","Api intigration","LIVE"],
+      links: [
+        { label: "View Project", url: "https://level-up-35in.onrender.com/" },
+        { label: "GitHub", url: "https://github.com/Johanlee69/Level-UP--Local-version---JAuth-" }
+      ]
+    },
+    {
       title: "A Password Manager",
       description: "A Password manager tool inspried by the game Dark Souls III. I havn't tested this project properly there might be some bugs",
       image: screenshot4,
-      tags: ["React","Toastify","React-Icons"],
+      tags: ["React","Toastify","React-Icons","LIVE"],
       links: [
         { label: "View Project", url: "https://pass-souls-iii.onrender.com/" },
         { label: "GitHub", url: "https://github.com/Johanlee69/pass-souls-III" }
@@ -92,17 +103,6 @@ const projectsData = {
       tags: ["React", "TailwindCSS", "RESTful", "MERN"],
       links: [
         { label: "GitHub", url: "https://github.com/Johanlee69/ChatGPT--Clone-wrapper" }
-      ]
-    },
-    ,
-    {
-      title: "Task Manager(Level UP)",
-      description: "Task manager app with a level up theme.where users can add tasks, delete tasks, and mark tasks as completed and gain xp and level up",
-      image: screenshot1,
-      tags: ["React","NODE","Express","Api intigration"],
-      links: [
-        { label: "View Project", url: "https://level-up-guest.onrender.com" },
-        { label: "GitHub", url: "https://github.com/Johanlee69/Level-UP--Guest-/tree/main" }
       ]
     },
     {
@@ -120,11 +120,74 @@ const projectsData = {
 const contactData = {
   title: "Get In Touch",
   message: "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
-  email: "johnthesheepbuzz605@gmail.com"
+  email: "guddumandal605605@gmail.com"
 };
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Smooth scroll function
+  const smoothScroll = (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      setIsMenuOpen(false);
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 900;
+      
+      let startTime = null;
+      
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const scrollY = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, scrollY);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+      function easeInOutCubic(t, b, c, d) {
+        t /= d/2;
+        if (t < 1) return c/2*t*t*t + b;
+        t -= 2;
+        return c/2*(t*t*t + 2) + b;
+      }
+      requestAnimationFrame(animation);
+    }
+  };
+
+  const smoothHorizontalScroll = (container, scrollAmount) => {
+    if (!container) return;
+    
+    const startPosition = container.scrollLeft;
+    const targetPosition = startPosition + scrollAmount;
+    const distance = scrollAmount;
+    const duration = 800; 
+    
+    let startTime = null;
+    
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const scrollX = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+      container.scrollLeft = scrollX;
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+    
+    function easeInOutCubic(t, b, c, d) {
+      t /= d/2;
+      if (t < 1) return c/2*t*t*t + b;
+      t -= 2;
+      return c/2*(t*t*t + 2) + b;
+    }
+    
+    requestAnimationFrame(animation);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-slate-900 text-white">
@@ -160,21 +223,41 @@ function App() {
           </button>
           <div className="hidden md:flex space-x-8">
             {navLinks.map(link => (
-              <a key={link.id} href={`#${link.id}`} className="hover:text-blue-400 transition">
+              <a 
+                key={link.id} 
+                href={`#${link.id}`} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScroll(link.id);
+                }}
+                className="hover:text-blue-400 transition cursor-pointer"
+              >
                 {link.label}
               </a>
             ))}
           </div>
         </div>
-        {isMenuOpen && (
-          <div className="md:hidden bg-slate-900 px-4 py-2">
+        <div 
+          className={`md:hidden bg-slate-900 overflow-hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="px-4 py-2">
             {navLinks.map(link => (
-              <a key={link.id} href={`#${link.id}`} className="block py-2 hover:text-blue-400 transition">
+              <a 
+                key={link.id} 
+                href={`#${link.id}`} 
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScroll(link.id);
+                }}
+                className="block py-2 hover:text-blue-400 transition cursor-pointer"
+              >
                 {link.label}
               </a>
             ))}
           </div>
-        )}
+        </div>
       </nav>
 
       <section className="container mx-auto py-16 md:py-20 flex flex-col items-center justify-center text-center relative">
@@ -183,7 +266,7 @@ function App() {
             src={profilePic}
             alt={heroData.name}
             className="w-40 h-40 rounded-full object-cover cursor-pointer shadow-[0_2px_10px_rgba(59,130,246,0.2)] hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)]
- transition-shadow duration-300 z-10 relative"
+              transition-shadow duration-300 z-10 relative"
           />
         </div>
         <h1 className="text-3xl md:text-6xl font-bold mb-6">
@@ -197,11 +280,15 @@ function App() {
             <a
               key={index}
               href={button.href}
+              onClick={(e) => {
+                e.preventDefault();
+                const targetId = button.href.substring(1); 
+                smoothScroll(targetId);
+              }}
               className={button.className}
             >
               <p className="pr-2">
               {button.label}
-
               </p>
             </a>
           ))}
@@ -249,18 +336,30 @@ function App() {
 
       <section id="projects" className="bg-slate-900/90 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center flex justify-center gap-4">
+           <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block scale-x-[-1] cursor-pointer scale-[-80%] hover:scale-[-100%] transition-all duration-300" onClick={() => {
+              const scrollContainer = document.querySelector('.fixscroll');
+              if (scrollContainer) {
+                smoothHorizontalScroll(scrollContainer, -400); 
+              }
+            }}/>
             {projectsData.title.split(' ')[0]} <span className="text-blue-400">{projectsData.title.split(' ')[1]}</span>
+            <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block cursor-pointer scale-[80%] hover:scale-[100%] transition-all duration-300" onClick={() => {
+              const scrollContainer = document.querySelector('.fixscroll');
+              if (scrollContainer) {
+                smoothHorizontalScroll(scrollContainer, 400); 
+              }
+            }}/>
           </h2>
-          <div className="overflow-x-auto pb-4">
-            <div className="fixscroll flex space-x-6 min-w-max px-2">
+          <div className="fixscroll overflow-x-auto pb-4 scroll-smooth scrollbar-hide">
+            <div className="flex space-x-6 min-w-max px-2">
               {projectsData.items.map((project, index) => (
                 <div key={index} className="bg-black/70 backdrop-blur-xl rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0">
                   <div className="h-48 bg-slate-800 overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="object-cover h-full w-full"
+                      className="object-cover w-full hover:scale-105 transition-all duration-300"
                     />
                   </div>
                   <div className="p-6">

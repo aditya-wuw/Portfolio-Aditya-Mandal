@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
-/* Adding Persona 3 button animation */
+html {
+  scroll-behavior: smooth;
+}
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
 @keyframes p3-button-pulse {
   0%, 100% {
     box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
@@ -55,7 +61,11 @@
     height: 0;
     border-left: 40px solid transparent;
     border-right: 40px solid transparent;
-    border-bottom: 60px solid #1e90ff; /* Triangle color */
+    border-bottom: 60px solid #1e90ff; 
+  }
+
+  .scrollbar-hide::-webkit-scrollbar{
+    display: none;
   }
   
  
