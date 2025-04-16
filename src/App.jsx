@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import profilePic from "./Assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
 import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
 import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
@@ -9,6 +9,8 @@ import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4"
 import Aragaki from "./Assets/Aragaki-blue.png"
 import Mitsuru from "./Assets/Misturu.png"
 import { MdArrowForwardIos } from "react-icons/md";
+import P3buttons from "./Components/P-3button";
+import P3TittleScreenText from "./Components/P3-TittleScreenText";
 const navLinks = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
@@ -18,7 +20,7 @@ const navLinks = [
 
 const heroData = {
   name: "Aditya Mandal",
-  role: "FullStack Developer specializing in Frontend and building modern, responsive web applications with REACT, NODE, and TailwindCSS.",
+  role: "Also known as '@Nulled Faced Dev', a FullStack Developer specializing in Frontend and building modern, responsive web applications with REACT, NODE, and TailwindCSS.",
   buttons: [
     { 
       label: "Get in Touch", 
@@ -118,14 +120,25 @@ const projectsData = {
 };
 
 const contactData = {
-  title: "Get In Touch",
+  title: "Contact Info",
   message: "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
   email: "guddumandal605605@gmail.com"
 };
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Smooth scroll function
+  const [isDesktop, setIsDesktop] = useState(false);
+  
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const smoothScroll = (targetId) => {
     const targetElement = document.getElementById(targetId);
     
@@ -261,18 +274,20 @@ function App() {
       </nav>
 
       <section className="container mx-auto py-16 md:py-20 flex flex-col items-center justify-center text-center relative">
-        <div className="mb-8">
+        <div className="mb-8 relative">
           <img
             src={profilePic}
             alt={heroData.name}
             className="w-40 h-40 rounded-full object-cover cursor-pointer shadow-[0_2px_10px_rgba(59,130,246,0.2)] hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)]
-              transition-shadow duration-300 z-10 relative"
+              transition-shadow duration-300 z-10 relative md:mb-10"
           />
         </div>
-        <h1 className="text-3xl md:text-6xl font-bold mb-6">
-          Hi, I'm <span className="text-blue-400">{heroData.name}</span>
+        <h1 className="md:text-6xl text-7xl font-bold mb-6 relative text-start">
+          <p className="relative z-11 md:right-25 text-blue-100">Hi, I'm</p> <span className="relative md:absolute md:top-[-68%] left-3 md:left-25 z-10 max-w-[50vw]">
+          <P3TittleScreenText lable={heroData.name} />
+          </span>
         </h1>
-        <p className="text-sm md:text-xl text-slate-300 max-w-2xl mb-8">
+        <p className="text-sm mx-5 md:text-xl text-slate-300 max-w-2xl mb-8">
           {heroData.role}
         </p>
         <div className="flex">
@@ -285,69 +300,35 @@ function App() {
                 const targetId = button.href.substring(1); 
                 smoothScroll(targetId);
               }}
-              className={button.className}
+              className={!isDesktop ? button.className : "relative z-10"}
             >
-              <p className="pr-2">
-              {button.label}
-              </p>
+              {isDesktop ? (
+                <P3buttons lable={button.label} />
+              ) : (
+                <p className="pr-2">
+                  {button.label}
+                </p>
+              )}
             </a>
           ))}
         </div>
         <video src={Persona3} autoPlay loop muted className="absolute inset-0 w-full h-full object-cover opacity-40 
           [mask-image:radial-gradient(circle_at_center,black_20%,transparent_90%)] mask scale-x-[-1]"></video>
       </section>
-
-      <section id="about" className="bg-slate-900/80 py-16 ">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-            {aboutData.title.split(' ')[0]} <span className="text-blue-400">{aboutData.title.split(' ')[1]}</span>
-          </h2>
-          <div className="max-w-3xl mx-auto text-slate-300">
-            {aboutData.paragraphs.map((paragraph, index) => (
-              <p key={index} className={index < aboutData.paragraphs.length - 1 ? "mb-4" : ""}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="skills" className="py-16 bg-black/60 relative">
-            <img src={Aragaki} alt="Aragaki" className="absolute top-10 md:top-0 md:left-[20%] left-[10%] w-[70%]  md:scale-x-[1] scale-x-[-1]  md:h-full object-cover opacity-50" />
-            <img src={Mitsuru} alt="Mitsuru" className="absolute bottom-0 md:left-[5%] md:scale-x-[1] scale-x-[-1] md:h-full object-cover opacity-30 " />
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-            {skillsData.title.split(' ')[0]} <span className="text-blue-400">{skillsData.title.split(' ')[1]}</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {skillsData.items.map((skill, index) => (
-              <div key={index} className="bg-slate-900/40 bg-blur p-4 border backdrop-blur-sm border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer ">
-                <h3 className="text-xl font-semibold mb-4 text-blue-400">
-                  {skill.name}
-                </h3>
-                <p className="text-slate-300">
-                  {skill.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="projects" className="bg-slate-900/90 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center flex justify-center gap-4">
            <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block scale-x-[-1] cursor-pointer scale-[-80%] hover:scale-[-100%] transition-all duration-300" onClick={() => {
               const scrollContainer = document.querySelector('.fixscroll');
               if (scrollContainer) {
-                smoothHorizontalScroll(scrollContainer, -400); 
+                smoothHorizontalScroll(scrollContainer, -600); 
               }
             }}/>
             {projectsData.title.split(' ')[0]} <span className="text-blue-400">{projectsData.title.split(' ')[1]}</span>
             <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block cursor-pointer scale-[80%] hover:scale-[100%] transition-all duration-300" onClick={() => {
               const scrollContainer = document.querySelector('.fixscroll');
               if (scrollContainer) {
-                smoothHorizontalScroll(scrollContainer, 400); 
+                smoothHorizontalScroll(scrollContainer, 600); 
               }
             }}/>
           </h2>
@@ -394,7 +375,43 @@ function App() {
           </div>
         </div>
       </section>
+      
+      <section id="skills" className="py-16 bg-black/60 relative">
+            <img src={Aragaki} alt="Aragaki" className="absolute top-10 md:top-0 md:left-[20%] left-[10%] w-[70%]  md:scale-x-[1] scale-x-[-1]  md:h-full object-cover opacity-50" />
+            <img src={Mitsuru} alt="Mitsuru" className="absolute bottom-0 md:left-[5%] md:scale-x-[1] scale-x-[-1] md:h-full object-cover opacity-30 " />
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+            {skillsData.title.split(' ')[0]} <span className="text-blue-400">{skillsData.title.split(' ')[1]}</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {skillsData.items.map((skill, index) => (
+              <div key={index} className="bg-slate-900/40 bg-blur p-4 border backdrop-blur-sm border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer ">
+                <h3 className="text-xl font-semibold mb-4 text-blue-400">
+                  {skill.name}
+                </h3>
+                <p className="text-slate-300">
+                  {skill.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      <section id="about" className="bg-slate-900/80 py-16 ">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+            {aboutData.title.split(' ')[0]} <span className="text-blue-400">{aboutData.title.split(' ')[1]}</span>
+          </h2>
+          <div className="max-w-3xl md:mx-auto mx-5 text-slate-300 ">
+            {aboutData.paragraphs.map((paragraph, index) => (
+              <p key={index} className={index < aboutData.paragraphs.length - 1 ? "mb-4" : ""}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="contact" className="py-16 bg-black/60">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
@@ -405,7 +422,11 @@ function App() {
               {contactData.message}
             </p>
             <div className="flex justify-center items-center space-x-2 text-xl">
-              <svg
+              <a
+                href={`mailto:${contactData.email}`}
+                className="text-blue-400 hover:underline text-sm md:text-2xl flex items-center gap-2"
+              >
+                  <svg
                 className="h-6 w-6 text-blue-400"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -418,12 +439,7 @@ function App() {
                   strokeWidth={2}
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 />
-              </svg>
-              <a
-                href={`mailto:${contactData.email}`}
-                className="text-blue-400 hover:underline text-sm md:text-2xl"
-              >
-                {contactData.email}
+              </svg> E-mail
               </a>
             </div>
           </div>
