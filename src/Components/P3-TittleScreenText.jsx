@@ -13,7 +13,7 @@ const P3TittleScreenText = ({ lable }) => {
         >
           <div className="bg-blue-500 p-1 md:p-4 h-full md:w-10 w-2 absolute bottom-[-5%] md:bottom-[-2%] md:left-[-15%] left-[-6%] group-hover:w-20 transition-all duration-150 z-0"></div>
           <p
-            className={`${!isHovered && "animate-text-bg"} relative z-10 text-6xl font-extrabold leading-12 text-transparent text-start 
+            className={`${!isHovered && "animate-text-bg"} relative z-10 md:text-6xl  font-extrabold md:leading-12 text-transparent text-start 
              bg-[linear-gradient(white,white)]  
              bg-clip-text bg-no-repeat 
              ${

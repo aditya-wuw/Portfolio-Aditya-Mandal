@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import profilePic from "./Assets/464cb0746bbaf2b962d7448bc987c8bb.jpg";
+import profilePic from "./Assets/logo.png";
 import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
 import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
 import screenshot3 from "./Assets/Screenshot 2025-03-01 200642.png";
@@ -25,7 +25,7 @@ const heroData = {
     { 
       label: "Get in Touch", 
       href: "#contact", 
-      className: "p3-button-pulse bg-blue-600 hover:bg-blue-700 text-white px-5 md:px-10 py-3 rounded-none font-medium transition-all duration-300 text-sm md:text-xl z-10 [clip-path:polygon(10%_0%,90%_0,80%_100%,0%_100%)] hover:shadow-[0_0_15px_rgba(37,99,235,0.8)] transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 relative" 
+      className: "p3-button-pulse bg-blue-600 hover:bg-blue-700 text-white px-5 md:px-10 py-3 rounded-none font-medium transition-all duration-300 text-sm md:text-xl z-10 [clip-path:polygon(12%_0%,95%_0,80%_100%,0%_100%)] hover:shadow-[0_0_15px_rgba(37,99,235,0.8)] transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 relative" 
     },
     { 
       label: "View My Work", 
@@ -89,6 +89,16 @@ const projectsData = {
       ]
     },
     {
+      title: "A Blog Social media website",
+      description: "Tried to make a social media blog website where users can share their story",
+      image: screenshot3,
+      tags: ["React", "TailwindCSS", "API Integration", "MERN"],
+      links: [
+        { label: "View Project", url: "https://blog-website-client-kcqr.onrender.com" },
+        { label: "GitHub", url: "https://github.com/Johanlee69/Blog-website" }
+      ]
+    },
+    {
       title: "A Password Manager",
       description: "A Password manager tool inspried by the game Dark Souls III. I havn't tested this project properly there might be some bugs",
       image: screenshot4,
@@ -105,15 +115,6 @@ const projectsData = {
       tags: ["React", "TailwindCSS", "RESTful", "MERN"],
       links: [
         { label: "GitHub", url: "https://github.com/Johanlee69/ChatGPT--Clone-wrapper" }
-      ]
-    },
-    {
-      title: "A Blog Social media website",
-      description: "Tried to make a social media blog website where users can share their story",
-      image: screenshot3,
-      tags: ["React", "TailwindCSS", "API Integration", "MERN"],
-      links: [
-        { label: "GitHub", url: "https://github.com/Johanlee69/Blog-website" }
       ]
     }
   ]
@@ -148,7 +149,6 @@ function App() {
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
       const duration = 900;
-      
       let startTime = null;
       
       function animation(currentTime) {
@@ -278,8 +278,8 @@ function App() {
           <img
             src={profilePic}
             alt={heroData.name}
-            className="w-40 h-40 rounded-full object-cover cursor-pointer shadow-[0_2px_10px_rgba(59,130,246,0.2)] hover:shadow-[0_4px_20px_rgba(59,130,246,0.5)]
-              transition-shadow duration-300 z-10 relative md:mb-10"
+            className="w-40 h-40 rounded-full object-cover cursor-pointer shadow-[0_2px_10px_rgba(59,130,246,0.2)] hover:shadow-[0_4px_20px_rgba(59,130,246,0.8)]
+              transition-shadow duration-300 z-10 relative md:mb-10 animate-pulse"
           />
         </div>
         <h1 className="md:text-6xl text-7xl font-bold mb-6 relative text-start">
@@ -318,14 +318,14 @@ function App() {
       <section id="projects" className="bg-slate-900/90 py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center flex justify-center gap-4">
-           <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block scale-x-[-1] cursor-pointer scale-[-80%] hover:scale-[-100%] transition-all duration-300" onClick={() => {
+           <MdArrowForwardIos className="text-blue-400  hidden bg-blue-900 size-10 p-2 rounded-full md:block cursor-pointer scale-[-80%] hover:scale-[-100%] transition-all duration-300" onClick={() => {
               const scrollContainer = document.querySelector('.fixscroll');
               if (scrollContainer) {
                 smoothHorizontalScroll(scrollContainer, -600); 
               }
             }}/>
             {projectsData.title.split(' ')[0]} <span className="text-blue-400">{projectsData.title.split(' ')[1]}</span>
-            <MdArrowForwardIos className="text-blue-400 hidden bg-blue-900 size-10 p-2 rounded-full md:block cursor-pointer scale-[80%] hover:scale-[100%] transition-all duration-300" onClick={() => {
+            <MdArrowForwardIos className="text-blue-400 hidden  bg-blue-900 size-10 p-2 rounded-full md:block cursor-pointer scale-[80%] hover:scale-[100%] transition-all duration-300" onClick={() => {
               const scrollContainer = document.querySelector('.fixscroll');
               if (scrollContainer) {
                 smoothHorizontalScroll(scrollContainer, 600); 
@@ -385,7 +385,7 @@ function App() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {skillsData.items.map((skill, index) => (
-              <div key={index} className="bg-slate-900/40 bg-blur p-4 border backdrop-blur-sm border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer ">
+              <div key={index} className="bg-slate-900/40 animate-pulse md:animate-bounce hover:animate-none bg-blur p-4 border backdrop-blur-sm border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer ">
                 <h3 className="text-xl font-semibold mb-4 text-blue-400">
                   {skill.name}
                 </h3>
@@ -424,7 +424,7 @@ function App() {
             <div className="flex justify-center items-center space-x-2 text-xl">
               <a
                 href={`mailto:${contactData.email}`}
-                className="text-blue-400 hover:underline text-sm md:text-2xl flex items-center gap-2"
+                className="text-blue-400 hover:underline text-sm md:text-2xl flex items-center gap-2 animate-bounce"
               >
                   <svg
                 className="h-6 w-6 text-blue-400"
