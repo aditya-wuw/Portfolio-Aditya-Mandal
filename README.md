@@ -1,6 +1,6 @@
 # Portfolio — Aditya Mandal
 Welcome to the portfolio of Aditya Mandal (also known as **@Nulled Faced Dev**), a Full Stack Developer specializing in frontend and building modern, responsive web applications with **React**, **Node.js**, and **TailwindCSS**. This project is a personal portfolio website that showcases skills, projects, and contact information.
-site currently hosted on render check out the hosted site : (https://www.nullfaceddev.xyz)
+Site currently hosted on render check out the hosted site : (https://www.nullfaceddev.xyz)
 ## Table of Contents
 
 - [Features](#features)
