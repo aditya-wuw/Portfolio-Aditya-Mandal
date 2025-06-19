@@ -56,48 +56,6 @@ Some highlighted projects featured on the portfolio:
   Clone of the ChatGPT web app with MongoDB chat history  
   [GitHub](https://github.com/aditya-wuw/ChatGPT--Clone-wrapper)
 
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v16+ recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-
-### Installation
-
-1. **Clone the repository:**
-    ```bash
-    git clone https://github.com/aditya-wuw/Portfolio-Aditya-Mandal.git
-    cd Portfolio-Aditya-Mandal
-    ```
-
-2. **Install dependencies:**
-    ```bash
-    npm install
-    # or
-    yarn
-    ```
-
-3. **Run the development server:**
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    ```
-
-4. Open [http://localhost:5173](http://localhost:5173) to view the site.
-
-## Available Scripts
-
-- `npm run dev` — Start the development server.
-- `npm run build` — Build the app for production.
-- `npm run preview` — Preview the production build.
-- `npm run lint` — Run ESLint for code quality.
-
-## Deployment
-
-The site can be easily deployed to platforms like Vercel, Netlify, or Render. For static hosting, run the build script and host the output in the `dist` folder.
-
 ## Contact
 
 Feel free to reach out if you're looking for a developer, have a question, or just want to connect!
