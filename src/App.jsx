@@ -4,7 +4,7 @@ import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
 import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
 import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4";
-import Fireship from "./Assets/Fireship.jpg";
+import Fireship from "./Assets/fireship.jpg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
