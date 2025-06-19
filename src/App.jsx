@@ -4,12 +4,13 @@ import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
 import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
 import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4";
+import Fireship from "./Assets/Fireship.jpg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
 import P3TittleScreenText from "./Components/P3-TittleScreenText";
+
 const navLinks = [
-  { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
@@ -31,14 +32,6 @@ const heroData = {
       className:
         "p3-button-pulse backdrop-blur-xl bg-blue-600/20  hover:border-blue-400 text-white px-10 py-3 rounded-none font-medium transition-all duration-300 text-sm md:text-xl z-10 [clip-path:polygon(10%_0%,90%_0,80%_100%,0%_100%)] hover:shadow-[0_0_15px_rgba(59,130,246,0.8)] transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100",
     },
-  ],
-};
-
-const aboutData = {
-  title: "About Me",
-  paragraphs: [
-    "My journey in web development began with a curiosity about how websites work, which evolved into having a career focused on building engaging digital experiences.",
-    "I enjoy the process of transforming ideas into reality using code. When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or enjoying a FromSoft game. yeah I'm a dark souls fan",
   ],
 };
 
@@ -99,7 +92,7 @@ const projectsData = {
       tags: ["React", "NODE", "Express", "React-Icons", "LIVE"],
       links: [
         { label: "View Project", url: "https://hms-dashbord-1.onrender.com/" },
-        { label: "GitHub", url: "https://github.com/Johanlee69/HMS-Dashbord" },
+        { label: "GitHub", url: "https://github.com/aditya-wuw/HMS-Dashbord" },
       ],
     },
     {
@@ -112,7 +105,20 @@ const projectsData = {
         { label: "View Project", url: "https://level-up-35in.onrender.com/" },
         {
           label: "GitHub",
-          url: "https://github.com/Johanlee69/Level-UP--Local-version---JAuth-",
+          url: "https://github.com/aditya-wuw/Level-UP--Local-version---JAuth-",
+        },
+      ],
+    },
+    {
+      title: "FireShip Discord bot",
+      description:
+        "FireShip bot is a Discord bot designed to keep users up to date with the latest videos from the FireShip YouTube channel",
+      image: Fireship,
+      tags: ["NODE", "EXPRESS", "RESTful", "Api creation"],
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/aditya-wuw/FireShipBot",
         },
       ],
     },
@@ -125,7 +131,7 @@ const projectsData = {
       links: [
         {
           label: "GitHub",
-          url: "https://github.com/Johanlee69/ChatGPT--Clone-wrapper",
+          url: "https://github.com/aditya-wuw/ChatGPT--Clone-wrapper",
         },
       ],
     },
@@ -187,42 +193,6 @@ function App() {
       }
       requestAnimationFrame(animation);
     }
-  };
-
-  const smoothHorizontalScroll = (container, scrollAmount) => {
-    if (!container) return;
-
-    const startPosition = container.scrollLeft;
-    const targetPosition = startPosition + scrollAmount;
-    const distance = scrollAmount;
-    const duration = 800;
-
-    let startTime = null;
-
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const scrollX = easeInOutCubic(
-        timeElapsed,
-        startPosition,
-        distance,
-        duration
-      );
-      container.scrollLeft = scrollX;
-
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
-    }
-
-    function easeInOutCubic(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t * t + b;
-      t -= 2;
-      return (c / 2) * (t * t * t + 2) + b;
-    }
-
-    requestAnimationFrame(animation);
   };
 
   return (
@@ -377,18 +347,21 @@ function App() {
                 {projectsData.title}
               </h2>
               <h1 className="text-center p-1 text-gray-400">
-                A collection of my work spanning from Front-end to full-stack projects <span><br/>( Tip: On mobile, swipe right to see more projects )</span>
+                A collection of my work spanning from Front-end to full-stack
+                projects{" "}
+                <span>
+                  <br />( Tip: On mobile, swipe right to see more projects )
+                </span>
               </h1>
-          
             </div>
             <div className="fixscroll overflow-x-auto pb-4 scroll-smooth scrollbar-hide">
               <div className="flex space-x-6 min-w-max px-2 justify-center">
                 {projectsData.items.map((project, index) => (
                   <div
                     key={index}
-                    className="bg-black/60 rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400 transition group w-80 md:w-96 flex-shrink-0"
+                    className="bg-black/30 hover:bg-black/70 transition-bg rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400  group w-80 md:w-70 flex-shrink-0"
                   >
-                    <div className="h-48 bg-slate-800 overflow-hidden">
+                    <div className="h-30 bg-slate-800 overflow-hidden">
                       <img
                         src={project.image}
                         alt={project.title}
@@ -399,7 +372,7 @@ function App() {
                       <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition">
                         {project.title}
                       </h3>
-                      <p className="text-slate-300 mb-4">
+                      <p className="text-slate-300 mb-2 text-sm py-2">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -471,7 +444,9 @@ function App() {
               <a href="https://github.com/aditya-wuw" target="_blank">
                 <FaGithub className="hover:cursor-pointer" />
               </a>
-              <a href="Aditya Mandal Resume 2025.pdf" target="_blank">CV</a>
+              <a href="Aditya Mandal Resume 2025.pdf" target="_blank">
+                CV
+              </a>
             </div>
           </div>
         </div>
@@ -480,9 +455,8 @@ function App() {
       <footer className="bg-black border-t border-slate-800 py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-slate-500">
-            © {new Date().getFullYear()} Aditya Mandal. ©ATLUS. ©SEGA All. 
-            rights reserved
-            ( Last updated 19th june 2025 )
+            © {new Date().getFullYear()} Aditya Mandal. ©ATLUS. ©SEGA All.
+            rights reserved ( Last updated 19th june 2025 )
           </p>
         </div>
       </footer>
