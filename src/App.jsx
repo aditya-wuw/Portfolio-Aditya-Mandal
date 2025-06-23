@@ -9,7 +9,8 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
 import P3TittleScreenText from "./Components/P3-TittleScreenText";
-
+import { FaClock } from "react-icons/fa";
+const lastUpdate = "23th June 2025"
 const navLinks = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
@@ -49,6 +50,11 @@ const skillsData = {
         "Skilled in creating full-stack web applications using Next.js, leveraging file-based routing, SSR, and API routes.",
     },
     {
+      name: "TypeScript",
+      description:
+        "Decent understanding of TypeScript. Comfortable using it to add type safety to React and Node.js projects.",
+    },
+    {
       name: "Tailwind CSS",
       description:
         "Expert in crafting responsive and utility-first designs with modern aesthetics using Tailwind CSS.",
@@ -72,12 +78,7 @@ const skillsData = {
       name: "MongoDB",
       description:
         "Experienced in handling NoSQL databases like MongoDB for flexible, document-oriented data storage.",
-    },
-    {
-      name: "TypeScript",
-      description:
-        "Decent understanding of TypeScript. Comfortable using it to add type safety to React and Node.js projects.",
-    },
+    }
   ],
 };
 
@@ -322,7 +323,7 @@ function App() {
               </h2>
               <h1 className="text-center p-1 text-gray-400">
                 Full-stack developer skilled in modern web tech, APIs,
-                databases, and UI design, My current expertise
+                databases, and UI design
               </h1>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 max-w-4xl mx-auto">
@@ -349,9 +350,6 @@ function App() {
               <h1 className="text-center p-1 text-gray-400">
                 A collection of my work spanning from Front-end to full-stack
                 projects{" "}
-                <span>
-                  <br />( Tip: On mobile, swipe right to see more projects )
-                </span>
               </h1>
             </div>
             <div className="fixscroll overflow-x-auto pb-4 scroll-smooth scrollbar-hide">
@@ -455,8 +453,11 @@ function App() {
       <footer className="bg-black border-t border-slate-800 py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-slate-500">
-            © {new Date().getFullYear()} Aditya Mandal. ©ATLUS. ©SEGA All.
-            rights reserved ( Last updated 19th june 2025 )
+            © {new Date().getFullYear()} Aditya Mandal. ©ATLUS. ©SEGA 
+          </p>
+          <p className="flex justify-center gap-2 items-center text-slate-500">
+            <FaClock/>
+            {lastUpdate}
           </p>
         </div>
       </footer>
