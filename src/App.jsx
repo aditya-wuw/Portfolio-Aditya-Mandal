@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import profilePic from "./Assets/logo.png";
 import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
-import screenshot2 from "./Assets/Screenshot 2025-04-12 120822.png";
+import screenshot2 from "./Assets/Screenshot 2025-07-20 125836.png";
 import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4";
 import Fireship from "./Assets/fireship.jpg";
@@ -10,7 +10,7 @@ import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
 import P3TittleScreenText from "./Components/P3-TittleScreenText";
 import { FaClock } from "react-icons/fa";
-const lastUpdate = "23th June 2025"
+const lastUpdate = "20th July 2025"
 const navLinks = [
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
@@ -111,28 +111,28 @@ const projectsData = {
       ],
     },
     {
-      title: "FireShip Discord bot",
+      title: "Mogger AI",
       description:
-        "FireShip bot is a Discord bot designed to keep users up to date with the latest videos from the FireShip YouTube channel",
-      image: Fireship,
-      tags: ["NODE", "EXPRESS", "RESTful", "Api creation"],
-      links: [
-        {
-          label: "GitHub",
-          url: "https://github.com/aditya-wuw/FireShipBot",
-        },
-      ],
-    },
-    {
-      title: "ChatGPT wrapper",
-      description:
-        "A clone of the ChatGPT web app, with chat history stored in MongoDB, very basic wrapper that I created to test my Full stack skills",
+        "AI-powered web app that generates personalized mock tests to help students prepare effectively for exams.",
       image: screenshot2,
-      tags: ["React", "TailwindCSS", "RESTful", "MERN"],
+      tags: ["NEXT", "TailwindCSS", "RESTful", "Supabase"],
       links: [
         {
           label: "GitHub",
           url: "https://github.com/aditya-wuw/ChatGPT--Clone-wrapper",
+        },
+      ],
+    },
+    {
+      title: "FireShip Discord bot",
+      description:
+        "FireShip bot is a Discord bot designed to keep users up to date with the latest videos from the FireShip YouTube channel",
+      image: Fireship,
+      tags: ["NODE", "EXPRESS", "YTV3", "Api creation"],
+      links: [
+        {
+          label: "GitHub",
+          url: "https://github.com/aditya-wuw/FireShipBot",
         },
       ],
     },
