@@ -1,155 +1,20 @@
 import { useState, useEffect } from "react";
 import profilePic from "./Assets/logo.png";
-import screenshot1 from "./Assets/Screenshot 2025-04-12 120420.png";
-import screenshot2 from "./Assets/Screenshot 2025-07-20 125836.png";
-import screenshot5 from "./Assets/Screenshot 2025-04-06 184611.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4";
-import Fireship from "./Assets/fireship.jpg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
 import P3TittleScreenText from "./Components/P3-TittleScreenText";
 import { FaClock } from "react-icons/fa";
-const lastUpdate = "20th July 2025"
-const navLinks = [
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
-];
+import { navLinks,heroData,skillsData,projectsData,contactData } from "../data";
+import {easeInOut, motion} from 'motion/react'
 
-const heroData = {
-  name: "Aditya Mandal",
-  role: "Also known as '@Nulled Faced Dev', a FullStack Developer specializing in Frontend and building modern, responsive web applications with REACT, NODE, and TailwindCSS. I'm currently learning data science and expanding my knowledge about AI models.",
-  buttons: [
-    {
-      label: "Get in Touch",
-      href: "#contact",
-      className:
-        "p3-button-pulse bg-blue-600 hover:bg-blue-700 text-white px-5 md:px-10 py-3 rounded-none font-medium transition-all duration-300 text-sm md:text-xl z-10 [clip-path:polygon(12%_0%,95%_0,80%_100%,0%_100%)] hover:shadow-[0_0_15px_rgba(37,99,235,0.8)] transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100 relative",
-    },
-    {
-      label: "View My Work",
-      href: "#projects",
-      className:
-        "p3-button-pulse backdrop-blur-xl bg-blue-600/20  hover:border-blue-400 text-white px-10 py-3 rounded-none font-medium transition-all duration-300 text-sm md:text-xl z-10 [clip-path:polygon(10%_0%,90%_0,80%_100%,0%_100%)] hover:shadow-[0_0_15px_rgba(59,130,246,0.8)] transform hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-100",
-    },
-  ],
-};
-
-const skillsData = {
-  title: "Skills",
-  items: [
-    {
-      name: "React.js",
-      description:
-        "Expert in building interactive, component-based UIs using React. Proficient with hooks, context API, and state management.",
-    },
-    {
-      name: "Next.js",
-      description:
-        "Skilled in creating full-stack web applications using Next.js, leveraging file-based routing, SSR, and API routes.",
-    },
-    {
-      name: "TypeScript",
-      description:
-        "Decent understanding of TypeScript. Comfortable using it to add type safety to React and Node.js projects.",
-    },
-    {
-      name: "Tailwind CSS",
-      description:
-        "Expert in crafting responsive and utility-first designs with modern aesthetics using Tailwind CSS.",
-    },
-    {
-      name: "Figma",
-      description:
-        "Comfortable with using Figma for UI/UX design. I have an eye for clean, attractive, and user-friendly interfaces.",
-    },
-    {
-      name: "Node.js",
-      description:
-        "Proficient in building scalable backend services, RESTful APIs, and integrating databases using Node.js and Express.",
-    },
-    {
-      name: "PostgreSQL",
-      description:
-        "Skilled in using PostgreSQL for relational database design, querying, and integration with backend services.",
-    },
-    {
-      name: "MongoDB",
-      description:
-        "Experienced in handling NoSQL databases like MongoDB for flexible, document-oriented data storage.",
-    }
-  ],
-};
-
-const projectsData = {
-  title: "Projects",
-  items: [
-    {
-      title: "HMS-dashbord",
-      description:
-        "Was tasked to build a Admin Hospital Management System Dashbord, no auth you can directly check the live demo",
-      image: screenshot5,
-      tags: ["React", "NODE", "Express", "React-Icons", "LIVE"],
-      links: [
-        { label: "View Project", url: "https://hms-dashbord-1.onrender.com/" },
-        { label: "GitHub", url: "https://github.com/aditya-wuw/HMS-Dashbord" },
-      ],
-    },
-    {
-      title: "Task Manager(Level UP)",
-      description:
-        "Task manager app with a level up theme.where users can add tasks, delete tasks, and mark tasks as completed and gain xp and level up",
-      image: screenshot1,
-      tags: ["React", "NODE", "Express", "Api intigration", "LIVE"],
-      links: [
-        { label: "View Project", url: "https://level-up-35in.onrender.com/" },
-        {
-          label: "GitHub",
-          url: "https://github.com/aditya-wuw/Level-UP--Local-version---JAuth-",
-        },
-      ],
-    },
-    {
-      title: "Mogger AI",
-      description:
-        "AI-powered web app that generates personalized mock tests to help students prepare effectively for exams.",
-      image: screenshot2,
-      tags: ["NEXT", "TailwindCSS", "RESTful", "Supabase"],
-      links: [
-        {
-          label: "GitHub",
-          url: "https://github.com/aditya-wuw/ChatGPT--Clone-wrapper",
-        },
-      ],
-    },
-    {
-      title: "FireShip Discord bot",
-      description:
-        "FireShip bot is a Discord bot designed to keep users up to date with the latest videos from the FireShip YouTube channel",
-      image: Fireship,
-      tags: ["NODE", "EXPRESS", "YTV3", "Api creation"],
-      links: [
-        {
-          label: "GitHub",
-          url: "https://github.com/aditya-wuw/FireShipBot",
-        },
-      ],
-    },
-  ],
-};
-
-const contactData = {
-  title: "Contact Info",
-  message:
-    "Feel free to reach out if you're looking for a developer, have a question, or just want to connect.",
-  email: "nullfaceddevbusiness@gmail.com",
-};
+const lastUpdate = "25th July 2025"
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-
+  
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 768);
@@ -161,7 +26,6 @@ function App() {
 
   const smoothScroll = (targetId) => {
     const targetElement = document.getElementById(targetId);
-
     if (targetElement) {
       setIsMenuOpen(false);
       const targetPosition =
@@ -181,7 +45,6 @@ function App() {
           duration
         );
         window.scrollTo(0, scrollY);
-
         if (timeElapsed < duration) {
           requestAnimationFrame(animation);
         }
@@ -198,9 +61,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-slate-900 text-white">
-      <nav className="sticky top-0 z-15 bg-black/40 backdrop-blur-sm border-b border-blue-800 ">
+      <nav className="sticky lg:mx-50 md:mx-20 mx-2 top-5 z-15 rounded-xl bg-blue-300/10 lg:backdrop-blur-[15px] backdrop-blur-[5px]">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <p className="text-xl font-bold text-blue-400">AM</p>
+          <p className="text-xl font-bold text-blue-800">AM</p>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white focus:outline-none"
@@ -266,9 +129,8 @@ function App() {
           </div>
         </div>
       </nav>
-
       <section className="container mx-auto py-16 md:py-20 flex flex-col items-center justify-center text-center relative">
-        <div className="mb-8 relative">
+        <div className="mb-8 relative lg:top-2 top-5">
           <img
             src={profilePic}
             alt={heroData.name}
@@ -276,8 +138,8 @@ function App() {
               transition-shadow duration-300 z-10 relative md:mb-10 "
           />
         </div>
-        <h1 className="md:text-6xl text-7xl font-bold mb-6 relative text-start">
-          <p className="relative z-11 md:right-25 text-blue-100">Hi, I'm</p>{" "}
+        <h1 className="md:text-6xl text-5xl font-bold mb-6 relative text-start">
+          <p className="relative z-11 md:right-25 text-blue-100">Hi, I'm</p>
           <span className="relative md:absolute md:top-[-68%] left-3 md:left-25 z-10 max-w-[50vw]">
             <P3TittleScreenText lable={heroData.name} />
           </span>
@@ -328,21 +190,28 @@ function App() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 max-w-4xl mx-auto">
               {skillsData.items.map((skill, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className="bg-slate-900/20 hover:animate-none bg-blur p-4 border backdrop-blur-xs border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer "
+                  className="bg-slate-900/50 hover:animate-none bg-blur p-4 border border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer "
+                  initial={{opacity:0}}
+                  animate={{opacity:1}}
+                  transition={{duration:0.5+index,ease:"easeInOutCubic"}}
                 >
                   <h3 className="text-xl font-semibold mb-4 text-blue-400">
                     {skill.name}
                   </h3>
                   <p className="text-slate-300">{skill.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
         <section id="projects">
-          <div className="container mx-auto px-4 relative hover:cursor-default">
+          <motion.div className="container mx-auto px-4 relative hover:cursor-default"
+            initial={{opacity:0,y:20}}
+            animate={{opacity:1,y:0}}
+            transition={{duration:1,ease:"circInOut"}}
+          >
             <div className="m-5 relative z-10">
               <h2 className="text-center font-bold p-1 text-2xl text-blue-400/80 hover:cursor-default">
                 {projectsData.title}
@@ -399,7 +268,7 @@ function App() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
       </div>
       <section id="contact" className="py-16 bg-black/80">
