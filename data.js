@@ -84,7 +84,7 @@ export const projectsData = {
         { label: "View Project", url: "https://mogger-mog-your-exams.vercel.app/" },
         {
           label: "GitHub",
-          url: "https://github.com/aditya-wuw/ChatGPT--Clone-wrapper",
+          url: "https://github.com/aditya-wuw/Mogger-Mog-your-exams",
         },
       ],
     },
@@ -108,7 +108,6 @@ export const projectsData = {
       image: assets.screenshot5,
       tags: ["React", "NODE", "Express", "React-Icons", "LIVE"],
       links: [
-        { label: "View Project", url: "https://hms-dashbord-1.onrender.com/" },
         { label: "GitHub", url: "https://github.com/aditya-wuw/HMS-Dashbord" },
       ],
     },

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 html {
   scroll-behavior: smooth;
@@ -8,21 +9,23 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 10px;
+  width: 2px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #475569;
-  border-radius: 10px;
+  background-color: #000000;
+  border-radius: 30px;
+
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #64748b;
+  background-color: #287cf1;
+  cursor: grab;
 }
 
 .triangle {
@@ -36,6 +39,24 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@media (min-width: 1368px) {
+  .scrollbar-show::-webkit-scrollbar {
+    display: inline-block;
+  }
+}
+
 .grid-bg {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0H0V20' stroke='%231F2937' stroke-width='1'/%3E%3C/svg%3E" );
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0H0V20' stroke='%231F2937' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+@font-face {
+  font-family: "Earwig Factory";
+  src: url("/font/earwig factory rg.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.persona5Tittle {
+  font-family: "Earwig Factory", sans-serif;
 }

@@ -1,28 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, Suspense, lazy } from "react";
 import profilePic from "./Assets/logo.png";
 import Persona3 from "./Assets/Persona 3 Reload Menu Wallpaper.mp4";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
 import P3buttons from "./Components/P-3button";
 import P3TittleScreenText from "./Components/P3-TittleScreenText";
-import { FaClock } from "react-icons/fa";
-import { navLinks,heroData,skillsData,projectsData,contactData } from "../data";
-import {easeInOut, motion} from 'motion/react'
 
-const lastUpdate = "25th July 2025"
+import { navLinks, heroData, skillsData } from "../data";
+
+import { Animation } from "./animationConfig.js";
+import { motion } from "motion/react";
+
+const Projects = lazy(() => import("./Components/Projects/projects"));
+const Contact = lazy(() => import("./Components/Contact/Contact.jsx"));
+const Footer = lazy(() => import("./Components/footer/Footer.jsx"));
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-  
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const smoothScroll = (targetId) => {
     const targetElement = document.getElementById(targetId);
@@ -66,7 +58,7 @@ function App() {
           <p className="text-xl font-bold text-blue-800">AM</p>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-blue-500 focus:outline-none"
           >
             <svg
               className="h-6 w-6"
@@ -100,7 +92,7 @@ function App() {
                   e.preventDefault();
                   smoothScroll(link.id);
                 }}
-                className="hover:text-blue-400 transition cursor-pointer"
+                className="hover:text-blue-400 transition cursor-pointer text-blue-300"
               >
                 {link.label}
               </a>
@@ -108,7 +100,7 @@ function App() {
           </div>
         </div>
         <div
-          className={`md:hidden bg-slate-900 overflow-hidden transition-all duration-300 ease-in-out ${
+          className={`md:hidden bg-slate-900/50 overflow-hidden transition-all duration-300 ease-in-out ${
             isMenuOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
@@ -121,7 +113,7 @@ function App() {
                   e.preventDefault();
                   smoothScroll(link.id);
                 }}
-                className="block py-2 hover:text-blue-400 transition cursor-pointer"
+                className="block py-2 hover:text-blue-400 transition cursor-pointer text-blue-300"
               >
                 {link.label}
               </a>
@@ -138,16 +130,24 @@ function App() {
               transition-shadow duration-300 z-10 relative md:mb-10 "
           />
         </div>
-        <h1 className="md:text-6xl text-5xl font-bold mb-6 relative text-start">
-          <p className="relative z-11 md:right-25 text-blue-100">Hi, I'm</p>
-          <span className="relative md:absolute md:top-[-68%] left-3 md:left-25 z-10 max-w-[50vw]">
+        <h1 className="mb-6 relative text-start">
+          <motion.p
+            className="relative z-11 md:right-25 text-blue-100 persona5Tittle md:text-7xl text-6xl mt-5 md:mt-0"
+            variants={Animation.Suigle()}
+            initial={"initial"}
+            animate={"animate"}
+          >
+            Hi, I'm
+          </motion.p>
+
+          <span className="relative md:absolute md:top-[-45%] left-3 md:left-39 z-10 max-w-[50vw]">
             <P3TittleScreenText lable={heroData.name} />
           </span>
         </h1>
         <p className="text-sm mx-5 md:text-xl text-slate-300 max-w-2xl mb-8">
           {heroData.role}
         </p>
-        <div className="flex">
+        <div className="flex md:gap-5 lg:gap-0">
           {heroData.buttons.map((button, index) => (
             <a
               key={index}
@@ -157,179 +157,78 @@ function App() {
                 const targetId = button.href.substring(1);
                 smoothScroll(targetId);
               }}
-              className={!isDesktop ? button.className : "relative z-10"}
+              className={"relative z-10"}
             >
-              {isDesktop ? (
-                <P3buttons lable={button.label} />
-              ) : (
-                <p className="pr-2">{button.label}</p>
-              )}
+              <P3buttons lable={button.label} />
             </a>
           ))}
         </div>
-        <video
+        <motion.video
           src={Persona3}
           autoPlay
           loop
           muted
-          className="absolute inset-0 w-full h-full object-cover opacity-40 
-          [mask-image:radial-gradient(circle_at_center,black_20%,transparent_90%)] mask scale-x-[-1]"
-        ></video>
+          className="absolute inset-0 w-full h-[70%] md:h-full object-cover [mask-image:radial-gradient(circle_at_center,black_20%,transparent_90%)] mask md:scale-x-[-1]"
+          variants={Animation.fade()}
+          initial={"initial"}
+          animate={"animate"}
+        ></motion.video>
       </section>
+
       <div className="grid-bg bg-black/70 relative">
-        <section id="skills" className="py-5  relative ">
+        <section id="skills" className="py-5  relative select-none">
           <div className="container mx-auto px-4 relative">
             <div className="m-5">
-              <h2 className="text-center font-bold p-1 text-2xl text-blue-400/80 hover:cursor-default">
-                {skillsData.title}
-              </h2>
+              <div className="flex justify-center items-center">
+                <motion.h2
+                  className="persona5Tittle text-center p-1 text-5xl text-blue-400/80 hover:cursor-default"
+                  variants={Animation.Suigle()}
+                  initial={"initial"}
+                  animate={"animate"}
+                >
+                  {skillsData.title}
+                </motion.h2>
+              </div>
               <h1 className="text-center p-1 text-gray-400">
                 Full-stack developer skilled in modern web tech, APIs,
                 databases, and UI design
               </h1>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 max-w-4xl mx-auto">
-              {skillsData.items.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-slate-900/50 hover:animate-none bg-blur p-4 border border-slate-800 hover:border-blue-400 transition scale-[90%] hover:scale-[100%] cursor-pointer "
-                  initial={{opacity:0}}
-                  animate={{opacity:1}}
-                  transition={{duration:0.5+index,ease:"easeInOutCubic"}}
-                >
-                  <h3 className="text-xl font-semibold mb-4 text-blue-400">
-                    {skill.name}
-                  </h3>
-                  <p className="text-slate-300">{skill.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section id="projects">
-          <motion.div className="container mx-auto px-4 relative hover:cursor-default"
-            initial={{opacity:0,y:20}}
-            animate={{opacity:1,y:0}}
-            transition={{duration:1,ease:"circInOut"}}
-          >
-            <div className="m-5 relative z-10">
-              <h2 className="text-center font-bold p-1 text-2xl text-blue-400/80 hover:cursor-default">
-                {projectsData.title}
-              </h2>
-              <h1 className="text-center p-1 text-gray-400">
-                A collection of my work spanning from Front-end to full-stack
-                projects{" "}
-              </h1>
-            </div>
-            <div className="fixscroll overflow-x-auto pb-4 scroll-smooth scrollbar-hide">
-              <div className="flex space-x-6 min-w-max px-2 justify-center">
-                {projectsData.items.map((project, index) => (
+            <div className=" mx-auto lg:max-w-4xl md:max-w-xl select-none">
+              <div className="md:grid flex flex-col gap-3 mx-5 md:mx-0 grid-rows-2 md:grid-cols-4 grid-cols-2 place-items-center lg:gap-3 md:gap-12 lg:mb-5 md:mb-10">
+                {skillsData.items.map((skill, index) => (
                   <div
                     key={index}
-                    className="bg-black/30 hover:bg-black/70 transition-bg rounded-lg overflow-hidden border border-slate-800 hover:border-blue-400  group w-80 md:w-70 flex-shrink-0"
+                    className=" hover:animate-none bg-blur transition lg:scale-[90%] lg:hover:scale-[100%] 
+                  cursor-pointer lg:w-55 lg:h-50 md:w-50 md:h-30 md:scale-[70%]"
                   >
-                    <div className="h-30 bg-slate-800 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="object-cover w-full hover:scale-105 transition-all duration-300"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-400 transition">
-                        {project.title}
+                    <div className="bg-slate-900/50 border border-slate-800 hover:border-blue-400 lg:h-55 lg:w-60 p-3 md:w-50 md:h-55">
+                      <h3 className="text-md md:text-xl font-semibold mb-4 text-blue-400">
+                        {skill.name}
                       </h3>
-                      <p className="text-slate-300 mb-2 text-sm py-2">
-                        {project.description}
+                      <p className="text-[80%] md:text-md lg:text-[100%] text-blue-200">
+                        {skill.description}
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span
-                            key={tagIndex}
-                            className="text-xs bg-blue-900/50 text-blue-300 px-2 py-1 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex space-x-4">
-                        {project.links.map((link, linkIndex) => (
-                          <a
-                            key={linkIndex}
-                            href={link.url}
-                            className="text-blue-400 hover:text-blue-300 transition"
-                          >
-                            {link.label}
-                          </a>
-                        ))}
-                      </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </motion.div>
-        </section>
-      </div>
-      <section id="contact" className="py-16 bg-black/80">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-            {contactData.title.split(" ")[0]}{" "}
-            <span className="text-blue-400">
-              {contactData.title.split(" ")[1]}
-            </span>
-          </h2>
-          <div className="max-w-xl mx-auto bg-slate-900/80 p-8 rounded-lg border border-slate-800 text-center">
-            <p className="text-slate-300 mb-6">{contactData.message}</p>
-            <div className="flex justify-center gap-3 items-center space-x-2 text-xl">
-              <a
-                href={`mailto:${contactData.email}`}
-                className="text-blue-400 hover:underline text-sm md:text-2xl flex items-center gap-2"
-              >
-                <svg
-                  className="h-6 w-6 text-blue-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>{" "}
-                E-mail
-              </a>
-              <a
-                href="https://www.linkedin.com/in/aditya-mandal-a30347294/"
-                target="_blank"
-              >
-                <FaLinkedin className="text-blue-300 hover:cursor-pointer" />
-              </a>
-              <a href="https://github.com/aditya-wuw" target="_blank">
-                <FaGithub className="hover:cursor-pointer" />
-              </a>
-              <a href="Aditya Mandal Resume 2025.pdf" target="_blank">
-                CV
-              </a>
-            </div>
           </div>
-        </div>
-      </section>
-
-      <footer className="bg-black border-t border-slate-800 py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-slate-500">
-            © {new Date().getFullYear()} Aditya Mandal. ©ATLUS. ©SEGA 
-          </p>
-          <p className="flex justify-center gap-2 items-center text-slate-500">
-            <FaClock/>
-            {lastUpdate}
-          </p>
-        </div>
-      </footer>
+        </section>
+        <Suspense
+          fallback={<div className="bg-transparent p-3"></div>}
+        >
+          <Projects />
+        </Suspense>
+      </div>
+      <Suspense fallback={<div className="bg-transparent p-3"></div>}>
+        <Contact />
+      </Suspense>
+       <Suspense fallback={<div className="bg-transparent p-3"></div>}>
+        <Footer />
+      </Suspense>
+      
     </div>
   );
 }

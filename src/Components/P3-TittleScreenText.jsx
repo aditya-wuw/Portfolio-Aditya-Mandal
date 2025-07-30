@@ -39,4 +39,4 @@ const P3TittleScreenText = ({ lable }) => {
   );
 };
 
-export default P3TittleScreenText;
+export default React.memo(P3TittleScreenText);
